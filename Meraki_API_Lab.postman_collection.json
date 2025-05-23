@@ -1004,7 +1004,7 @@
 					"variable": [
 						{
 							"key": "networkId",
-							"value": "{{branchnwId}}",
+							"value": "{{campusnwId}}",
 							"description": "(Required) Network ID"
 						},
 						{
