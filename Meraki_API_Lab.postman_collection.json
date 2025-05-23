@@ -71,7 +71,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -275,7 +275,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -385,7 +385,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -502,7 +502,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -619,7 +619,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -734,7 +734,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -861,7 +861,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
@@ -978,7 +978,7 @@
 					},
 					{
 						"key": "User-Agent",
-						"value": "application/jumpstart-postman",
+						"value": "Jumpstart/1.0 Postman",
 						"type": "text"
 					}
 				],
