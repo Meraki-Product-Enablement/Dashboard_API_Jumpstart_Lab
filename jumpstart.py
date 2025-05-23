@@ -51,7 +51,7 @@ try:
         result =  DASHBOARD.networks.updateNetwork(networkId=CAMPUS_NW['id'], name='Python-Campus')  
         if result == None:
             print("Nothing happend because the simulation mode is enabled.")
-            print("➡️➡️ Next step: Change the simulate paraemter to False and run the script agian.\n")
+            print("➡️➡️ Next step: Change the simulate parameter to False and run the script again.\n")
             exit()
         else:
             print(f"Network name was successfully updated to \'Python-Campus\'.\n")
@@ -61,40 +61,39 @@ except meraki.APIError as e:
     print(f"Meraki API Error: {e}")
     exit()
 
-# ********** Lab step 10 **********
+# ********** Lab step 11 **********
 # Update swith port settings and rename campus switch
 print(SEPARATOR)
 try:
-    print(f"Assign the port#2 of the campus switch to the VLAN 99.")
+    print(f"Rename the campus switch and configure switch port#2.")
     campus_switches = DASHBOARD.organizations.getOrganizationDevices(organizationId=LAB_ORG_ID,networkIds=[CAMPUS_NW['id']],productTypes=['switch'])
     if campus_switches == []:
         print("No switch found in the campus network.")
         exit()
     DASHBOARD.devices.updateDevice(serial=campus_switches[0]['serial'],name='Campus-Switch')
     port_config = {}
-    port_config = {'name': 'To-Campus-AP', 'allowdVlans' : '10-200', 'tags': ['wireless','meetingroom']}
     result = DASHBOARD.switch.updateDeviceSwitchPort(serial=campus_switches[0]['serial'],portId='2',**port_config)
     if result != None:
         print("Port configuration was successfully updated.\nReady for the next lab step.\n")
 except meraki.APIError as e:
     print(f"Meraki API Error: {e}")
-    print("➡️➡️ Next step: Follow the lab guide to fix the API call. Then run the script agian.\n")
+    print("➡️➡️ Next step: Follow the lab guide to fix the API call. Then run the script again.\n")
     exit()
 
-# ********** Lab step 11 **********
+# ********** Lab step 12 **********
 # Configure two SSIDs: corp and guest
 print(SEPARATOR)
 try:
     print(f"Rename APs in the campus network.")
     campus_aps = DASHBOARD.organizations.getOrganizationDevices(organizationId=LAB_ORG_ID,networkIds=[CAMPUS_NW['id']],productTypes=['wireless'])
     for ap in campus_aps:
-        DASHBOARD.devices.updateDevice(serial=ap['serial'],name='Campus-AP-'+ ap['mac'][-5:-4] + ap['mac'][-2:])
+        DASHBOARD.devices.updateDevice(serial=ap['serial'],name='Campus-AP-'+ ap['mac'][-5:-3] + ap['mac'][-2:])
     print(f"Configure two SSIDs in the campus network: corp and guest")
     ssids = [{ 'number': 0, 'settings':{'name': 'Jumpstart-corp', 'enabled': True, 'authMode':'8021x-meraki','wpaEncryptionMode':'WPA2 only','ipAssignmentMode':'Bridge mode','useVlanTagging':True,'defaultVlanId':99}},
              {'number': 1, 'settings':{'name': 'Jumpstart-guest', 'enabled': True, 'authMode':'psk','encryptionMode':'wpa','psk':'jumpstart1234'}}]
     for ssid in ssids:
         DASHBOARD.wireless.updateNetworkWirelessSsid(networkId=CAMPUS_NW['id'],number=ssid['number'],**ssid['settings'])
-    print('You are now at the end of Meraki Python SDK lab.')
+    print('🎉Congratulations! You are now at the end of Meraki Python SDK lab.\n')
 
 except meraki.APIError as e:
     print(f"Meraki API Error: {e}")
